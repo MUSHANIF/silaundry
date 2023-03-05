@@ -36,7 +36,7 @@
                 class="form-control"                
                 placeholder="100.000"
                 name="harga"
-                id="tanpa-rupiah"
+                
                 value="{{ old('harga') }}"
               />
             </div>
@@ -58,9 +58,11 @@
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label" for="basic-default-phone">Image</label>
             <div class="col-sm-10">
-                <input class="form-control" type="file" id="image" name="image" value="{{ old('image') }}" />
+              
+                <input class="form-control " type="file" id="image" name="image" value="{{ old('image') }}" />
                 <img id="preview-image-before-upload" src="" alt="" style="width: 250px" class="mt-3" />
             </div>
+            
           </div>
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label" for="basic-default-message">Deskripsi</label>

@@ -13,24 +13,21 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
     <!-- CSS here -->
+    <link rel="stylesheet" href="{{ asset('assets/css/LineIcons.3.0.css') }}" />
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/slicknav.css">
-    <link rel="stylesheet" href="assets/css/flaticon.css">
-    <link rel="stylesheet" href="assets/css/progressbar_barfiller.css">
-    <link rel="stylesheet" href="assets/css/gijgo.css">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/animated-headline.css">
+    
     <link rel="stylesheet" href="assets/css/magnific-popup.css">
     <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/slick.css">
-    <link rel="stylesheet" href="assets/css/nice-select.css">
+  
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/mainn.css">
-  
-    
+    <script src="https://cdn.statically.io/gh/devanka761/notipin/v1.24.49/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 <body>
    
@@ -68,60 +65,65 @@
                 <div class="header-right d-none d-lg-block">
                     
                     @can('admin')
-                    <li class="header-btn2 dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Selamat Datang,{{ Auth::user()->name }}
-                          </a>
-                    <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="/dashboardsuperadmin">Dashboard</a></li>
-                        <li><a class="dropdown-item" href="{{ route('logout') }}"
-                          onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                           {{ __('Logout') }}
-                          </a>
-                          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                          </form>
-                        </li>
-                      </ul>
-                    </li>
+                    <div class="header-left">
+                        <div class="menu-wrapper  d-flex align-items-center">
+                            <!-- Main-menu -->
+                            <div class="main-menu  d-lg-block mr-90">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a href="/">Welcome back, {{ auth()->user()->name }}</a>
+                                            <ul class="submenu">
+                                                <li><a href="/dashboardAdmin" class="">My Dashboard <i class="fa-solid fa-house-user ml-10"></i></a></li>
+                                                <li><hr></li>
+            
+                                                <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault();
+                                                                  document.getElementById('logout-form').submit();">
+                                                     {{ __('Logout') }}
+                                                    </a>
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                      @csrf
+                                                    </form>
+                                                  </li>
+            
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
                     @elsecan('user')
-                    <li class="header-btn2 dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Selamat Datang,{{ Auth::user()->name }}
-                          </a>
-                    <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="/dashboardsuperadmin">Dashboard</a></li>
-                        <li><a class="dropdown-item" href="{{ route('logout') }}"
-                          onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                           {{ __('Logout') }}
-                          </a>
-                          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                          </form>
-                        </li>
-                      </ul>
-                    </li>
+                    <div class="header-left">
+                        <div class="menu-wrapper  d-flex align-items-center">
+                            <!-- Main-menu -->
+                            <div class="main-menu  d-lg-block mr-90">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a href="/">Welcome back, {{ auth()->user()->name }}</a>
+                                            <ul class="submenu">
+                                                <li><a href="/dashboard" class="">My Dashboard <i class="fa-solid fa-house-user ml-10"></i></a></li>
+                                                <li><hr></li>
+            
+                                                <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault();
+                                                                  document.getElementById('logout-form').submit();">
+                                                     {{ __('Logout') }}
+                                                    </a>
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                      @csrf
+                                                    </form>
+                                                  </li>
+            
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
                
-                @elsecan('superadmin')
-                <li class="header-btn2 dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Selamat Datang,{{ Auth::user()->name }}
-                      </a>
-                <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="/dashboardsuperadmin">Dashboard</a></li>
-                    <li><a class="dropdown-item" href="{{ route('logout') }}"
-                      onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                       {{ __('Logout') }}
-                      </a>
-                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                      </form>
-                    </li>
-                  </ul>
-                </li>
+              
             
                 @else
                 <a href="{{ route('login') }}" class="header-btn2">Login</a>
@@ -149,7 +151,7 @@
                                 <div class="hero__caption">
                                     <h1 data-animation="fadeInLeft" data-delay="0.2s">Quality silaundry service in your city</h1>
                                     <p data-animation="fadeInLeft" data-delay="0.4s">We take care about cleenness of your cloth</p>
-                                    <a href="#" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.7s">Explore Services</a>
+                                    <a href="{{ route('login') }}" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.7s">Explore Services</a>
                                 </div>
                             </div>
                         </div>
@@ -281,73 +283,7 @@
                 </div>
             </section>
         </section>
-        <!-- Want To work End -->
-        <!-- Testimonials_start -->
-        <section class="testimonials-area testimonials-overly  position-relative">
-            <div class="container">
-                <div class="border-bottom section-padding40 ">
-                    <div class="row">
-                        <div class="col-xl-12 ">
-                            <!-- testmonial-image -->
-                            <div class="testmonial-nav text-center">
-                                <div class="testmonial-thumb">
-                                    <img src="assets/img/gallery/testimonila1.png" alt="">
-                                </div>
-                                <div class="testmonial-thumb">
-                                    <img src="assets/img/gallery/testimonila2.png" alt="">
-                                </div>
-                                <div class="testmonial-thumb">
-                                    <img src="assets/img/gallery/testimonila3.png" alt="">
-                                </div>
-                                <div class="testmonial-thumb">
-                                    <img src="assets/img/gallery/testimonila2.png" alt="">
-                                </div>
-                            </div>
-                            <div class="testmonial-item-active text-center">
-                                <!-- testimonial-single-items -->
-                                <div class="testmonial-item ">
-                                    <p class="pera">The automated process starts as soon as your clothes go into the<br> machine. The outcome is gleaming clothes!</p>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <p> - Rupaya</p>
-                                </div>
-                                <!-- testimonial-single-items -->
-                                <div class="testmonial-item ">
-                                    <p class="pera">The automated process starts as soon as your clothes go into the<br> machine. The outcome is gleaming clothes!</p>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <p> - Rupaya</p>
-                                </div>
-                                <!-- testimonial-single-items -->
-                                <div class="testmonial-item ">
-                                    <p class="pera">The automated process starts as soon as your clothes go into the<br> machine. The outcome is gleaming clothes!</p>
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <p> - Rupaya</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Testimonials_end -->
-        <!--? Company achievement Start -->
+     
         <section class="services-area section-padding40 fix">
             <div class="container">
                 <div class="row justify-content-center">
@@ -507,24 +443,7 @@
 </div>
 
 <!-- JS here -->
-<script>
-    
-    $(document).ready(function(){
-           $(document).on('click', '#pesan', function () {
-            var userid = $(this).data('userid');
-         var harga = $(this).data('harga');
-         var kategori = $(this).data('kategori');
-         
-   
-         $('#userid').attr('value',userid);
-         $('#harga').attr('value',harga);
-         $('#kategori').attr('value',kategori);
-       
-        
-         
-      });
-    });
-  </script>
+
 <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
 <!-- Jquery, Popper, Bootstrap -->
 <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
@@ -556,6 +475,15 @@
 <script src="./assets/js/hover-direction-snake.min.js"></script>
 
 <!-- contact js -->
+ 
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+<!-- Owl Carousel -->
 <script src="./assets/js/contact.js"></script>
 <script src="./assets/js/jquery.form.js"></script>
 <script src="./assets/js/jquery.validate.min.js"></script>
@@ -565,6 +493,18 @@
 <!-- Jquery Plugins, main Jquery -->	
 <script src="./assets/js/plugins.js"></script>
 <script src="./assets/js/main.js"></script>
-
+<script>
+    @foreach($errors->all() as $error)
+    Notipin.Alert({
+        msg: "{{ $error }}", 
+        yes: "OKE",
+        
+        type: "NORMAL",
+        mode: "DARK",
+        })
+        
+    @endforeach
+    
+</script>
 </body>
 </html>

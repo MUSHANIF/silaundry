@@ -1,6 +1,6 @@
 
 
-<section class="trending-product section" style="margin-top: 12px;">
+<section class="trending-product section" style="margin-top: 12px; color: black;">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -13,7 +13,7 @@
         </div>
         <div class="row">
          @foreach ($datas as $key )                      
-            <div class="col-lg-3 col-md-6 col-12">
+            <div class="col-lg-4 col-md-6 col-12">
                 <!-- Start Single Product -->
                 <div class="single-product">
                     <div class="product-image">
@@ -51,8 +51,8 @@
             @endforeach
         </div>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade" id="exampleModal"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
               @auth
@@ -66,73 +66,51 @@
              <form action="{{ route('tambah',Auth::user()->id) }}" method="POST" >
               @csrf
               <input type="hidden" id="userid" name="userid" value="">
-              
+              <input type="hidden" id="kode_invoce" name="kode_invoce" value="">
               <input type="hidden" id="paketid" name="paketid" value="">
-              <div class="row mb-3">
-                <div class="col-md-12 mt-2">
-                <label for="exampleFormControlInput1" class="form-label">Tanggal</label>                
-                  <input type="date-local" class="form-control" id="basic-default-name" name="tgl" value="{{ $today }}"/>
+              
+               <div class="row">
+                <div class="col-md-12 mb-2">
+                  <label for="validationDefault04" class="form-label">Kilo</label>
+                  <select class="form-select mb-2" name="kilo" id="validationDefault04" required>
+                    <option selected disabled value="">Choose...</option>
+                    <option value="1">1 KG</option>
+                    <option value="2">2 KG</option>
+                    <option value="3">3 KG</option>
+                    <option value="4">4 KG</option>
+                  </select>
                 </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-12 mt-2">
-                <label for="exampleFormControlInput1" class="form-label">Batas Waktu</label>
-                
-                  <input type="date" class="form-control" id="basic-default-name" name="batas_waktu" value="" />
+                <div class="col-md-6 mb-2 mt-2">
+                  <label for="validationDefault02" class="form-label">Waktu</label>
+                  <input type="date" class="form-control" name="tgl" id="validationDefault02" value="Otto" required>
                 </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-12 mt-2">
-                <label for="exampleFormControlInput1" class="form-label">Kilo</label>
-                
-                <select class="form-select" id="exampleFormControlSelect1" name="kilo" aria-label="Default select example">                    
-                  <option id="1" value="1">1</option>                                                                                      
-                  <option id="1" value="2">2</option> 
-                  <option id="1" value="3">3</option> 
-                  <option id="1" value="4">4</option> 
-                </select>
+               
+                <div class="col-md-6 mb-2 mt-2">
+                  <label for="validationDefault03" class="form-label">batas waktu</label>
+                  <input type="date" class="form-control" name="batas_waktu" id="validationDefault03" required>
                 </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-12 mt-2">
-                <label for="exampleFormControlInput1" class="form-label">Metode pembayaran</label>
-                
-                <select class="form-select" id="exampleFormControlSelect1" name="metode_pembayaran" aria-label="Default select example">                    
-                  <option id="1" value="cash">Cash</option>                                                                                      
-                </select>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-md-12 mt-2">
-                <label for="exampleFormControlInput1" class="form-label">Masukan uang nya</label>                
-                <input type="number" class="form-control" id="basic-default-name" name="bayar" value="" />
-                </div>
-              </div>
-            
-              <div class="row mb-3">
-                
-                <div class="col-md-12 mt-2">
-                  <label for="exampleFormControlInput1" class="form-label">Apakah anda ingin menjadi member?</label>
-                  <select class="form-select" id="exampleFormControlSelect1" name="status" aria-label="Default select example">
+              
+                <div class="col-md-12 mb-2 mt-2 ">
+                  <label for="validationDefault05" class="form-label">bayar</label>
+                  <input type="text" class="form-control" name="bayar" placeholder="Rp.20.000" id="validationDefault05" required>
+                </div>  
+                <div class="col-md-12 mb-2 mt-2">
+                  <label for="validationDefault04" class="form-label">Metode pembayaran</label>
+                  <select class="form-select" name="metode_pembayaran" id="validationDefault04" required>
                     
-                       <option id="1" value="member">Ya</option>
-                       <option id="2" value="tidak member">Tidak dulu</option>
-                    
-
-                      
-                     </select>
-                </div>
-              </div>
-                
+                    <option value="cash">cash</option>                                                      
+                  </select>
+                </div>  
+              </div> 
           
               
               
             
           </div>
      
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Pesan</button>
+          <div class="modal-footer" >
+            <button type="button" class="btn btn-secondary" style="padding: 10px 12px;" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary"  style="padding: 10px 12px;">Pesan</button>
           </form>
           @else
           <h1 class="modal-title fs-5" id="exampleModalLabel">Pesan</h1>
@@ -149,4 +127,22 @@
           </div>
         </div>
       </div>
+      <script>
+    
+        $(document).ready(function(){
+               $(document).on('click', '#pesan', function () {
+                var userid = $(this).data('userid');
+             
+             var paketid = $(this).data('paketid');
+             
+       
+             $('#userid').attr('value',userid);
+             $('#paketid').attr('value',paketid);
+             
+           
+            
+             
+          });
+        });
+      </script>
 </section>
